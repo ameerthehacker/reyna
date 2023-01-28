@@ -16,7 +16,26 @@ function createProxy(reynaRoute) {
           })
         });
 
-        return res;
+        if (res.ok) {
+          const resJSON = await res.json();
+
+          if (resJSON.result) {
+            return resJSON.result;
+          } else {
+            const rpcError = resJSON.error;
+            const error = new Error();
+
+            error.name = rpcError.name;
+            error.message = rpcError.message;
+            error.stack = rpcError.stack;
+
+            throw error;
+          }
+        } else {
+          const resTxt = res.text();
+
+          throw new Error(resTxt);
+        }
       }
     }
   });

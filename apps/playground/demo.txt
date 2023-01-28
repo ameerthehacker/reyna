@@ -1,0 +1,1 @@
+This file is read in the server and sent to the frontend

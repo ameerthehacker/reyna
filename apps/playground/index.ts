@@ -1,9 +1,8 @@
-import { hello } from './something';
-import { getTodos } from './todo.server';
-import { getProduct } from './products.server';
+// import backend functions directly in frontend :)
+// end to end type safety
+// works with js/ts
+import { getDemoFileContent } from './demo.server';
 
-// frontend
-getTodos();
-getProduct(1);
-
-hello();
+getDemoFileContent().then(content => {
+  document.getElementById('file-content')!.innerText = content;
+});
