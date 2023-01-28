@@ -1,5 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["REYNA_SERVER_PORT"],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
