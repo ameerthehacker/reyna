@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0-dev",
   "scripts": {
+    "start": "reyna start",
     "dev": "reyna dev",
     "build": "reyna build"
   },
