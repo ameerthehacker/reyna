@@ -32,7 +32,7 @@ export type RPCResponse = {
 
 async function startViteServer(reynaServerHostname: string, reynaServerPort: number, hostname: string = '0.0.0.0', port: number = 3000) {
   const viteDevServer = await vite.createServer({
-    root: process.cwd(),
+    root: path.join(process.cwd(), 'src'),
     server: {
       port,
       host: hostname
@@ -56,7 +56,7 @@ async function startViteServer(reynaServerHostname: string, reynaServerPort: num
   return () => viteDevServer.close();
 }
 
-function startNodeServer(hostname: string, port: number) {
+function startNodeServer(hostname: string, port: number, isDev: boolean) {
   function getRPCMessage(req: http.IncomingMessage): Promise<RPCRequest> {
     return new Promise((resolve) => {
       let body: string = "";
@@ -77,12 +77,13 @@ function startNodeServer(hostname: string, port: number) {
     if (req.url === '/reyna' && (req.method === 'POST' || req.method === 'OPTIONS')) {
       const requestStartTime = performance.now();
 
-      // TODO: avoid this header during prod build
-      res.setHeader('Access-Control-Allow-Origin', '*');
-      res.setHeader('Access-Control-Allow-Methods', '*');
-      res.setHeader('Access-Control-Allow-Headers', '*');
-      res.setHeader('Access-Control-Request-Headers', '*');
-      res.setHeader('Access-Control-Allow-Credentials', '*');
+      if (isDev) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', '*');
+        res.setHeader('Access-Control-Allow-Headers', '*');
+        res.setHeader('Access-Control-Request-Headers', '*');
+        res.setHeader('Access-Control-Allow-Credentials', '*');
+      }
 
       if (req.method === 'POST') {
         const rpcMessage = await getRPCMessage(req);
@@ -163,9 +164,7 @@ function startNodeServer(hostname: string, port: number) {
 }
 
 export async function startDevServer({ hostname = '0.0.0.0', port = 8000 }: DevServerConfig) {
-  process.env.REYNA_SERVER_PORT = `${port}`;
-
-  const disposeNodeServer = startNodeServer(hostname, port);
+  const disposeNodeServer = startNodeServer(hostname, port, true);
   const disposeViteServer = await startViteServer(hostname, port);
 
   return async () => {

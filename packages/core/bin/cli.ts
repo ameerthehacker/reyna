@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 import minimist from 'minimist';
+import { build } from '../build';
 import { startDevServer } from '../dev-server';
 import logger from '../logger';
 
-const { _: args, ...flags } = minimist(process.argv.slice(2));
+const { _: args } = minimist(process.argv.slice(2));
 const [command] = args;
 
 if (!command) {
@@ -13,6 +14,11 @@ if (!command) {
 switch (command) {
   case 'dev': {
     startDevServer({});
+
+    break;
+  }
+  case 'build': {
+    build();
 
     break;
   }

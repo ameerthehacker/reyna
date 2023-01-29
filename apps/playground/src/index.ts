@@ -5,4 +5,4 @@ import { getDemoFileContent } from './demo.server';
 
 getDemoFileContent().then(content => {
   document.getElementById('file-content')!.innerText = content;
-});
+}).catch(err => {}) 
