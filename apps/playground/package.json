@@ -4,8 +4,7 @@
   "version": "0.0.0-dev",
   "scripts": {
     "start": "reyna start",
-    "dev": "reyna dev",
-    "build": "reyna build"
+    "dev": "reyna dev"
   },
   "dependencies": {
     "@babel/preset-env": "^7.20.2",
