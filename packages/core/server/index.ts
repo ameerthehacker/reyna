@@ -26,7 +26,7 @@ export function startNodeServer(hostname: string, port: number, isDev: boolean) 
     const rpcMethodParts = rpcMessage.method.split('/');
     const serverModuleRelativePath = rpcMethodParts.slice(0, rpcMethodParts.length - 1).join('/');
     const methodName = rpcMethodParts[rpcMethodParts.length - 1];
-    const severModuleAbsolutePath = path.resolve(process.cwd(), serverModuleRelativePath);
+    const severModuleAbsolutePath = path.resolve(isDev? process.cwd(): distDir, serverModuleRelativePath);
     const serverModule = require(severModuleAbsolutePath);
 
     try {
