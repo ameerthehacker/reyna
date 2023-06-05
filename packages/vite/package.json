@@ -1,0 +1,17 @@
+{
+  "name": "@reyna/vite",
+  "version": "0.0.0",
+  "description": "Vite plugin for Reyna RPC",
+  "module": "./dist/index.js",
+  "main": "./dist/index.cjs",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.2",
+    "@reyna/tsconfig": "*"
+  }
+}

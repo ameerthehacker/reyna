@@ -1,0 +1,20 @@
+{
+  "name": "@reyna/vite-express",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Playground to tryout Reyna vite express",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.3",
+    "vite": "^4.3.9",
+    "@reyna/vite": "*",
+    "@reyna/tsconfig": "*"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "@reyna/express": "*"
+  }
+}
