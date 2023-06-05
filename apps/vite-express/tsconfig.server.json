@@ -1,9 +1,9 @@
 {
+  "include": ["./src/**/**.server.ts"],
   "compilerOptions": {
     "moduleResolution": "node",
     "target": "ESNext",
-    "declaration": true,
+    "outDir": "./dist/server",
     "esModuleInterop": true
-  },
-  "exclude": ["node_modules"]
+  }
 }

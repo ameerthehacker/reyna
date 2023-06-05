@@ -4,17 +4,24 @@
   "private": true,
   "description": "Playground to tryout Reyna vite express",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build"
+    "dev": "concurrently -k yarn:dev:frontend yarn:dev:backend",
+    "build": "concurrently -k yarn:build:frontend yarn:build:backend",
+    "dev:frontend": "vite",
+    "build:frontend": "vite build",
+    "build:backend": "tsc --project tsconfig.server.json",
+    "dev:backend": "node -r ts-node/register --no-warnings --watch ./src/main.server.ts"
   },
   "devDependencies": {
-    "typescript": "^5.1.3",
-    "vite": "^4.3.9",
+    "@reyna/tsconfig": "*",
     "@reyna/vite": "*",
-    "@reyna/tsconfig": "*"
+    "concurrently": "^8.1.0",
+    "vite": "^4.3.9"
   },
   "dependencies": {
+    "@reyna/express": "*",
+    "@types/express": "^4.17.17",
     "express": "^4.18.2",
-    "@reyna/express": "*"
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3"
   }
 }
