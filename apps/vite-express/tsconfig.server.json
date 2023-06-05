@@ -1,9 +1,10 @@
 {
-  "include": ["./src/**/**.server.ts"],
+  "include": ["**/**.server.ts"],
   "compilerOptions": {
     "moduleResolution": "node",
     "target": "ESNext",
     "outDir": "./dist/server",
+    "rootDir": "./",
     "esModuleInterop": true
   }
 }

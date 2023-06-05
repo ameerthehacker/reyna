@@ -2,7 +2,7 @@ import { babelReynaTransformPlugin } from '@reyna/babel';
 import * as babel from '@babel/core';
 import path from 'path';
 
-export function viteReynaPlugin() {
+export function viteReynaPlugin(serverUrl: string) {
   return {
     name: 'vite-reyna-plugin',
     enforce: 'pre',
@@ -27,6 +27,13 @@ export function viteReynaPlugin() {
         );
   
         return { code, map };
+      }
+    },
+    config() {
+      return {
+        define: {
+          REYNA_ENDPOINT: JSON.stringify(`${serverUrl}/reyna`)
+        }
       }
     }
   }

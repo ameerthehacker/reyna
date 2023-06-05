@@ -7,5 +7,5 @@ export default defineConfig({
   build: {
     outDir: path.resolve(__dirname, 'dist')
   },
-  plugins: [viteReynaPlugin()]
+  plugins: [viteReynaPlugin('http://localhost:8000')]
 });

@@ -28,7 +28,7 @@ export function babelReynaTransformPlugin(babel: Babel) {
             }
           });
           
-          nodePath.node.specifiers = [t.importNamespaceSpecifier(createProxyLocal)];
+          nodePath.node.specifiers = [t.importDefaultSpecifier(createProxyLocal)];
           nodePath.insertAfter(
             t.variableDeclaration('const', [t.variableDeclarator(proxyLocal, t.callExpression(createProxyLocal, [t.stringLiteral(serverFilePath)]))])
           )
