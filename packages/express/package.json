@@ -2,10 +2,8 @@
   "name": "@reyna/express",
   "version": "0.0.0",
   "description": "Express middleware for Reyna RPC",
-  "module": "./dist/index.js",
-  "main": "./dist/index.cjs",
+  "main": "./dist/index.js",
   "license": "MIT",
-  "type": "module",
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch"

@@ -1,0 +1,15 @@
+{
+  "name": "@reyna/babel",
+  "description": "Babel plugin for Reyna RPC",
+  "version": "0.0.0",
+  "main": "./dist/index.js",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@reyna/tsconfig": "*",
+    "@types/babel__core": "^7.20.1",
+    "typescript": "^5.1.3"
+  }
+}

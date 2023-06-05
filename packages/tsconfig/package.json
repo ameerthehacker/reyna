@@ -1,5 +1,6 @@
 {
   "name": "@reyna/tsconfig",
+  "private": true,
   "description": "Common tsconfig for Reyna RPC",
   "version": "0.0.0"
 }

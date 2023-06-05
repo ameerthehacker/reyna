@@ -2,16 +2,24 @@
   "name": "@reyna/vite",
   "version": "0.0.0",
   "description": "Vite plugin for Reyna RPC",
-  "module": "./dist/index.js",
-  "main": "./dist/index.cjs",
+  "main": "./dist/index.js",
   "license": "MIT",
-  "type": "module",
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch"
   },
+  "files": [
+    "./dist",
+    "proxy.ts"
+  ],
   "devDependencies": {
-    "typescript": "^4.5.2",
-    "@reyna/tsconfig": "*"
+    "@reyna/babel": "*",
+    "@reyna/tsconfig": "*",
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "@babel/core": "^7.22.1",
+    "@babel/preset-react": "^7.22.3",
+    "@babel/preset-typescript": "^7.21.5"
   }
 }
