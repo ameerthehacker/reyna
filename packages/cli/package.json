@@ -13,6 +13,7 @@
     "@reyna/express": "*",
     "@reyna/vite": "*",
     "chalk": "^4.1.2",
+    "glob": "^10.2.6",
     "minimist": "^1.2.8",
     "ts-node": "^10.9.1"
   },
