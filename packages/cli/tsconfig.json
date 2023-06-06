@@ -1,0 +1,9 @@
+{
+  "include": ["."],
+  "compilerOptions": {
+    "outDir": "./dist",
+    "declaration": false
+  },
+  "extends": "@reyna/tsconfig",
+  "exclude": ["dist"]
+}

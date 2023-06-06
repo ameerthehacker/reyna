@@ -1,0 +1,10 @@
+{
+  "name": "@reyna/cli-playground",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "reyna dev"
+  },
+  "dependencies": {
+    "@reyna/cli": "*"
+  }
+}

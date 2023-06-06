@@ -3,10 +3,12 @@
   "description": "Babel plugin for Reyna RPC",
   "version": "0.0.0",
   "main": "./dist/index.js",
+  
   "scripts": {
     "dev": "tsc --watch",
     "build": "tsc"
   },
+  "files": ["dist"],
   "devDependencies": {
     "@reyna/tsconfig": "*",
     "@types/babel__core": "^7.20.1",

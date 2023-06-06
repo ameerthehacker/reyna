@@ -12,7 +12,7 @@ const SERVER_REGEX = /(.*)\.server(\.(jsx?|tsx?))?/;
 export function viteReynaPlugin(config: ViteReynaPluginConfig) {
   return {
     name: 'vite-reyna-plugin',
-    enforce: 'pre',
+    enforce: 'pre' as 'pre' | 'post',
     resolveId(id: string) {
       if (SERVER_REGEX.test(id)) {
         return { id: path.resolve(__dirname, '..', 'proxy.js') };

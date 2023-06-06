@@ -18,8 +18,8 @@ export function reyna(req: Request, res: Response, next: NextFunction) {
     const { method, params } = req.body;
     const functionName = path.basename(method);
     const relativeFilePath = path.dirname(method);
-    const parentFilePath = path.dirname(require.main.filename);
-    const absoluteFilePath = path.resolve(parentFilePath, relativeFilePath);
+    const serverBasePath = process.env.REYNA_SERVER_BASE_PATH  || path.dirname(require.main.filename);
+    const absoluteFilePath = path.resolve(serverBasePath, relativeFilePath);
 
     const _function = require(absoluteFilePath)[functionName] as Function;
 

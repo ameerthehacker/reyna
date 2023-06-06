@@ -1,0 +1,25 @@
+{
+  "name": "@reyna/cli",
+  "description": "Reyna RPC framework powered by vite and express.js",
+  "version": "0.0.0",
+  "bin": {
+    "reyna": "./dist/bin/reyna.js"
+  },
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@reyna/express": "*",
+    "@reyna/vite": "*",
+    "chalk": "^4.1.2",
+    "minimist": "^1.2.8",
+    "ts-node": "^10.9.1"
+  },
+  "files": [
+    "./dist"
+  ],
+  "devDependencies": {
+    "typescript": "^5.1.3"
+  }
+}
