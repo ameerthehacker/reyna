@@ -2,7 +2,12 @@ import { babelReynaTransformPlugin } from '@reyna/babel';
 import * as babel from '@babel/core';
 import path from 'path';
 
-export function viteReynaPlugin(serverUrl: string) {
+type ViteReynaPluginConfig = {
+  serverUrl: string;
+  serverBasePath: string;
+}
+
+export function viteReynaPlugin(config: ViteReynaPluginConfig) {
   return {
     name: 'vite-reyna-plugin',
     enforce: 'pre',
@@ -21,7 +26,7 @@ export function viteReynaPlugin(serverUrl: string) {
           source,
           {
             presets: ['@babel/preset-typescript', '@babel/preset-react'],
-            plugins: [babelReynaTransformPlugin],
+            plugins: [babelReynaTransformPlugin(config.serverBasePath)],
             filename: id
           }
         );
@@ -32,7 +37,7 @@ export function viteReynaPlugin(serverUrl: string) {
     config() {
       return {
         define: {
-          REYNA_ENDPOINT: JSON.stringify(`${serverUrl}/reyna`)
+          REYNA_ENDPOINT: JSON.stringify(`${config.serverUrl}/reyna`)
         }
       }
     }

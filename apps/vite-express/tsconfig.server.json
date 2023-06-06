@@ -4,7 +4,6 @@
     "moduleResolution": "node",
     "target": "ESNext",
     "outDir": "./dist/server",
-    "rootDir": "./",
     "esModuleInterop": true
   }
 }

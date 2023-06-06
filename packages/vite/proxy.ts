@@ -21,7 +21,7 @@ function createProxy(serverFilePath) {
         if (response.ok) {
           const responseAsJSON = await response.json();
 
-          if (responseAsJSON.result) {
+          if (!responseAsJSON.error) {
             return responseAsJSON.result;
           } else {
             const rpcError = responseAsJSON.error;
