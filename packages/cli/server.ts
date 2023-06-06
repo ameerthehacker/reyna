@@ -3,11 +3,12 @@ import express from 'express';
 import path from 'path';
 import logger from './logger';
 
-export function startExpressServer(hostname: string, port: number, isDev: boolean) {
+export function startExpressServer(hostname: string, port: number) {
   const app = express();
+  const isDev = process.env.NODE_ENV === 'development';
 
   if (!isDev) {
-    app.use(express.static(path.resolve(__dirname, '..')));
+    app.use(express.static(path.resolve(process.cwd(), 'dist')));
   }
 
   app.use(express.json());

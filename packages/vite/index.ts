@@ -3,7 +3,7 @@ import * as babel from '@babel/core';
 import path from 'path';
 
 type ViteReynaPluginConfig = {
-  serverUrl: string;
+  serverUrl?: string;
   serverBasePath: string;
 }
 
@@ -45,7 +45,7 @@ export function viteReynaPlugin(config: ViteReynaPluginConfig) {
 
       return {
         define: {
-          REYNA_ENDPOINT: JSON.stringify(`${config.serverUrl}reyna`)
+          REYNA_ENDPOINT: JSON.stringify(`${config.serverUrl || '/'}reyna`)
         },
         build: env.mode === 'development'? buildConfig: {}
       }

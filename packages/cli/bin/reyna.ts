@@ -2,6 +2,8 @@
 import minimist from 'minimist';
 import logger from '../logger';
 import { startDevServer } from '../dev';
+import { build } from '../build';
+import { start } from '../start';
 
 const { _: args } = minimist(process.argv.slice(2));
 const [command] = args;
@@ -12,6 +14,7 @@ if (!command) {
 
 switch (command) {
   case 'start': {
+    start({});
     
     break;
   }
@@ -21,6 +24,7 @@ switch (command) {
     break;
   }
   case 'build': {
+    build();
 
     break;
   }

@@ -2,7 +2,9 @@
   "name": "@reyna/cli-playground",
   "version": "0.0.0",
   "scripts": {
-    "dev": "reyna dev"
+    "start": "reyna start",
+    "dev": "reyna dev",
+    "build": "reyna build"
   },
   "dependencies": {
     "@reyna/cli": "*"

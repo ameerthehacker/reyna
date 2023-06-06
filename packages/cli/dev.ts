@@ -11,7 +11,6 @@ export type DevServerConfig = {
 };
 
 async function startViteServer(hostname: string = '0.0.0.0', expressPort: number, port?: number) {
-  const serverBasePath = path.resolve(process.cwd(), 'src');
   const viteDevServer = await vite.createServer({
     root: path.join(process.cwd(), 'src'),
     server: {
@@ -24,7 +23,7 @@ async function startViteServer(hostname: string = '0.0.0.0', expressPort: number
     configFile: false,
     plugins: [
       viteReynaPlugin({
-        serverBasePath,
+        serverBasePath: process.env.REYNA_SERVER_BASE_PATH,
         serverUrl: '/'
       })
     ]
@@ -39,12 +38,13 @@ async function startViteServer(hostname: string = '0.0.0.0', expressPort: number
 }
 
 export async function startDevServer({ hostname = '0.0.0.0', expressPort = 8000, vitePort }: DevServerConfig) {
+  process.env.NODE_ENV = 'development';
   // ensure ts files are transpiled on the fly
   require('ts-node/register');
   // override the default server base path used by @reyna/express
   process.env.REYNA_SERVER_BASE_PATH = path.resolve(process.cwd(), 'src');
 
-  const disposeNodeServer = await startExpressServer(hostname, expressPort, true);
+  const disposeNodeServer = startExpressServer(hostname, expressPort);
   const disposeViteServer = await startViteServer(hostname, expressPort, vitePort);
 
   return async () => {
