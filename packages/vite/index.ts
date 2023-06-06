@@ -7,14 +7,14 @@ type ViteReynaPluginConfig = {
   serverBasePath: string;
 }
 
+const SERVER_REGEX = /(.*)\.server(\.(jsx?|tsx?))?/;
+
 export function viteReynaPlugin(config: ViteReynaPluginConfig) {
   return {
     name: 'vite-reyna-plugin',
     enforce: 'pre',
     resolveId(id: string) {
-      const matcher = /(.*)\.server(\.(js|ts))?/;
-      
-      if (matcher.test(id)) {
+      if (SERVER_REGEX.test(id)) {
         return { id: path.resolve(__dirname, '..', 'proxy.js') };
       }
 
@@ -34,11 +34,20 @@ export function viteReynaPlugin(config: ViteReynaPluginConfig) {
         return { code, map };
       }
     },
-    config() {
+    config(_, env) {
+      const buildConfig = {
+        rollupOptions: {
+          input: {
+            exclude: SERVER_REGEX,
+          },
+        }
+      };
+
       return {
         define: {
           REYNA_ENDPOINT: JSON.stringify(`${config.serverUrl}reyna`)
-        }
+        },
+        build: env.mode === 'development'? buildConfig: {}
       }
     }
   }
