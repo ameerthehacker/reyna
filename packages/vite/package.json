@@ -10,7 +10,7 @@
   },
   "files": [
     "./dist",
-    "proxy.ts"
+    "proxy.js"
   ],
   "devDependencies": {
     "@reyna/babel": "*",

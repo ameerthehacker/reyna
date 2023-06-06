@@ -15,7 +15,7 @@ export function viteReynaPlugin(config: ViteReynaPluginConfig) {
       const matcher = /(.*)\.server(\.(js|ts))?/;
       
       if (matcher.test(id)) {
-        return { id: path.resolve(__dirname, '..', 'proxy.ts') };
+        return { id: path.resolve(__dirname, '..', 'proxy.js') };
       }
 
       return null;
@@ -37,7 +37,7 @@ export function viteReynaPlugin(config: ViteReynaPluginConfig) {
     config() {
       return {
         define: {
-          REYNA_ENDPOINT: JSON.stringify(`${config.serverUrl}/reyna`)
+          REYNA_ENDPOINT: JSON.stringify(`${config.serverUrl}reyna`)
         }
       }
     }

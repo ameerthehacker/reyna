@@ -1,4 +1,3 @@
-// @ts-expect-error
 const REYNA_ENDPOINT = window.REYNA_ENDPOINT;
 
 if (!REYNA_ENDPOINT) {
@@ -7,7 +6,7 @@ if (!REYNA_ENDPOINT) {
 
 function createProxy(serverFilePath) {
   return new Proxy({}, {
-    get: (_, property: string) => {
+    get: (_, property) => {
       return async (...args) => {
         const response = await fetch(REYNA_ENDPOINT, {
           headers: { 'Content-Type': 'application/json' },

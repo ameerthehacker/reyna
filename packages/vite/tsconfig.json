@@ -4,5 +4,5 @@
     "outDir": "./dist"
   },
   "extends": "@reyna/tsconfig",
-  "exclude": ["dist", "proxy.ts"]
+  "exclude": ["dist"]
 }
